@@ -14,19 +14,16 @@ for (let i = 0; i < pronouns.length; i++) {
         let endMatch = true;
         let check = pronouns[i] + adjectives[j] + nouns[k];
         let q = 1;
-        while (q <= extension.length) {
+        for (let q = 1; q <= extension.length; q++) {
           if (check[check.length - q] !== extension[extension.length - q]) {
             endMatch = false;
             break;
           }
-          q++;
         }
         if (endMatch) {
           let hackDomain = "";
-          let x = 0;
-          while (x < check.length - extension.length) {
+          for (let x = 0; x < check.length - extension.length; x++) {
             hackDomain += check[x];
-            x++;
           }
           domainNameWithExtension = hackDomain + "." + extension;
         } else {
