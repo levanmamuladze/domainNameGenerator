@@ -1,6 +1,6 @@
 const pronouns = ["the", "our"];
-const adjectives = ["great", "big"];
-const nouns = ["jogger", "racoon", "lockercom", "nikuk", "okreai"];
+const adjectives = ["great", "bc"];
+const nouns = ["om", "racoon", "lockercom", "nikuk", "okreai"];
 const domains = ["com", "uk", "org", "ai"];
 
 for (let i = 0; i < pronouns.length; i++) {
@@ -10,32 +10,25 @@ for (let i = 0; i < pronouns.length; i++) {
         const extension = domains[l];
         let domain = pronouns[i] + adjectives[j];
         let noun = nouns[k];
-        let domainNameWithExtension = "";
-        // Add the characters of the domain and noun
-        for (let b = 0; b < domain.length; b++) {
-          domainNameWithExtension += domain[b];
-        }
-        for (let p = 0; p < noun.length; p++) {
-          domainNameWithExtension += noun[p];
-        }
+        let domainNameWithExtension = domain + noun;
         let endMatch = true;
-        // Compare the characters of the noun and extension
-        for (let q = 1; q <= extension.length; q++) {
-          if (noun[noun.length - q] !== extension[extension.length - q]) {
+        let check = pronouns[i] + adjectives[j] + nouns[k];
+        let q = 1;
+        while (q <= extension.length) {
+          if (check[check.length - q] !== extension[extension.length - q]) {
             endMatch = false;
+            break;
           }
+          q++;
         }
-        // Check if the noun end is same with the extension
-        if (noun.length >= extension.length && endMatch) {
-          // If the noun has the same end with the extension, remove it from the domain name
-          for (
-            let o = domain.length;
-            o < domainNameWithExtension.length - extension.length;
-            o++
-          ) {
-            domain += domainNameWithExtension[o];
+        if (endMatch) {
+          let hackDomain = "";
+          let x = 0;
+          while (x < check.length - extension.length) {
+            hackDomain += check[x];
+            x++;
           }
-          domainNameWithExtension = domain + "." + extension;
+          domainNameWithExtension = hackDomain + "." + extension;
         } else {
           domainNameWithExtension = domainNameWithExtension + "." + extension;
         }
