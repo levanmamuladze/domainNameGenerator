@@ -13,8 +13,7 @@ for (let i = 0; i < pronouns.length; i++) {
         let domainNameWithExtension = domain + noun;
         let endMatch = true;
         let check = pronouns[i] + adjectives[j] + nouns[k];
-        let q = 1;
-        for (let q = 1; q <= extension.length; q++) {
+        for (let q = 0; q <= extension.length; q++) {
           if (check[check.length - q] !== extension[extension.length - q]) {
             endMatch = false;
             break;
